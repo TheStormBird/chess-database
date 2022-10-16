@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //This class is responsible for storing and processing all
 //information related to a single game of chess
 public class Game {
-    private int gameID;
+    private static int gameID = 0;
     String location;
     String date;
     Player[] players = new Player[2];
@@ -14,11 +14,12 @@ public class Game {
 
     //Creates a game object, puts players[0] as white, players[1] as black
     //and saves other information
-    Game(Player playerWhite, Player playerBlack, String location,String date) {
+    public Game(Player playerWhite, Player playerBlack, String location,String date) {
         this.players[0] = playerWhite;
         this.players[1] = playerBlack;
         this.location = location;
         this.date = date;
+        gameID++;
     }
 
     //EFFECTS: returns the gameID
@@ -78,7 +79,7 @@ public class Game {
             players[0].incrementWin();
             players[1].incrementLoss();
             return true;
-        } else if (move.charAt(1) == '1') {
+        } else if (move.charAt(0) == '0') {
             result = 1;
             players[1].incrementWin();
             players[0].incrementLoss();
