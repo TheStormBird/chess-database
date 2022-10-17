@@ -1,9 +1,6 @@
 package model;
 
-import java.sql.Array;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 //Stores all the games and players and allows access
 public class Database {

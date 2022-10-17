@@ -3,10 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.crypto.Data;
-
-import java.util.Scanner;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DatabaseTest {

@@ -1,4 +1,5 @@
 //I found out about AtomicInteger while using the Oracle Documentation.
+
 package model;
 
 import java.util.ArrayList;

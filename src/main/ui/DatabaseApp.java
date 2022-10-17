@@ -27,6 +27,9 @@ public class DatabaseApp {
         }
     }
 
+    //REQUIRES: A Scanner object
+    //MODIFIES: this
+    //EFFECTS: Creates a Player Object
     static Player playerCreator(Scanner input) {
         System.out.println("Enter the name of the player:");
         String name = input.next();
