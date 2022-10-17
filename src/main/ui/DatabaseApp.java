@@ -92,13 +92,13 @@ public class DatabaseApp {
                 System.out.println("Enter the name of the player: ");
                 String name = input.nextLine();
                 Player player = database.searchPlayer(name);
-                player.printPlayer();
+                System.out.println(player.printPlayer());
                 break;
             case 4:
                 System.out.println("Enter the id for the game: ");
                 int id = input.nextInt();
                 Game game = database.searchGame(id);
-                game.printGame();
+                System.out.println(game.printGame());
                 break;
         }
     }

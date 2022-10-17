@@ -48,4 +48,13 @@ public class GameTest {
         assertTrue(Bobby.getWins() == 2);
 
     }
+
+    @Test
+    void testPrint() {
+        assertEquals(game1.printGame(),
+        "Player with white pieces: " + "Boris Spassky" + " \n Player with the black pieces"
+                + "Bobby Fischer" + "\n location:" + "Iceland" + "\n date: " + "16/07/1972"
+                + "The winner of the game is: " + "Boris Spassky" + " ("
+                + "Grand Master" + ")\n");
+    }
 }

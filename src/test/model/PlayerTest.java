@@ -31,4 +31,10 @@ public class PlayerTest {
         assertTrue(player1.getWins() == 1);
         assertTrue(player3.getLosses() == 1);
     }
+
+    @Test
+    void testPrint() {
+        assertEquals(player3.printPlayer(), "Player Name:" + "Mohsen"
+                + " (" + "Amateur" + ") \n ELO rating: " + 0 + "\n Win/Loss Ratio: " + 1);
+    }
 }
