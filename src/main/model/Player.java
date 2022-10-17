@@ -72,5 +72,9 @@ public class Player {
         this.losses++;
     }
 
-
+    //EFFECTS: Print out the details of the player
+    public void printPlayer() {
+        System.out.println("Player Name:" + getName()
+        + " (" + getTitle() + ") \n ELO rating: " + getRating() + "\n Win/Loss Ratio: " + (getWins() / getLosses()));
+    }
 }

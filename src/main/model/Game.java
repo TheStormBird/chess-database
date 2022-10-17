@@ -100,4 +100,12 @@ public class Game {
         }
         return false;
     }
+
+    //EFFECTS: Print out the details of the game
+    public void printGame() {
+        System.out.println("Player with white pieces: " + getPlayers()[0].getName() + " \n Player with the black pieces"
+                + getPlayers()[1].getName() + "\n location:" + location + "\n date: " + date
+                + "The winner of the game is: " + getPlayers()[result].getName() + " ("+ getPlayers()[result].getTitle()
+                + ")\n");
+    }
 }

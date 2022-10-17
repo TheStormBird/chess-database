@@ -82,19 +82,23 @@ public class DatabaseApp {
         switch (command) {
             case 1:
                 database.addPlayer(playerCreator(input));
+                System.out.println("Player added successfully.");
                 break;
             case 2:
                 database.addGame(gameCreator(input, database));
+                System.out.println("Game added successfully.");
                 break;
             case 3:
                 System.out.println("Enter the name of the player: ");
                 String name = input.nextLine();
-                database.searchPlayer(name);
+                Player player = database.searchPlayer(name);
+                player.printPlayer();
                 break;
             case 4:
                 System.out.println("Enter the id for the game: ");
                 int id = input.nextInt();
-                database.searchGame(id);
+                Game game = database.searchGame(id);
+                game.printGame();
                 break;
         }
     }
