@@ -39,7 +39,7 @@ public class Game {
     //MODIFIES: this
     //EFFECTS: Add the move to the moves list and returns true
     //if the addition is successful
-    boolean addMove(String move) {
+    public boolean addMove(String move) {
         if (verifyMove(move)) {
             moves.add(move);
             return true;
@@ -80,7 +80,7 @@ public class Game {
     //REQUIRES: A String representing a move
     //MODIFIES: this
     //EFFECTS: Ends the game and modifies the result
-    boolean endGame(String move) {
+    public boolean endGame(String move) {
         if (move.length() != 3 || move.charAt(1) != '-') {
             return false;
         }

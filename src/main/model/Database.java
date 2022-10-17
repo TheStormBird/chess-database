@@ -49,41 +49,22 @@ public class Database {
         return null;
     }
 
+
     //REQUIRES: A Player object
     //MODIFIES: this
     //EFFECTS: Adds the player to the list of all players
-    public void addPlayer(Scanner input) {
-        System.out.println("Enter the name of the player:");
-        String name = input.next();
-        System.out.println("Enter the title of the player (if any):");
-        String title = input.next();
-        System.out.println("Enter the ELO rating of the player (if any):");
-        int rating = input.nextInt();
-        System.out.println("Enter the wins of the player (if any):");
-        int wins = input.nextInt();
-        System.out.println("Enter the losses of the player (if any):");
-        int losses = input.nextInt();
-        players.add(new Player(name, title, rating, wins, losses));
+    public boolean addPlayer(Player player) {
+        players.add(player);
+        return true;
     }
 
     //REQUIRES: A Game object
     //MODIFIES: this
-    //EFFECTS: Adds the game to the list of all games
-    public void addGame(Scanner input) {
-        System.out.println("Enter the name of player on white pieces: ");
-        String nameWhite = input.nextLine();
-        System.out.println("Enter the name of player on black pieces: ");
-        String nameBlack = input.nextLine();
-        System.out.println("Enter the location of the game: ");
-        String location = input.nextLine();
-        System.out.println("Enter the date of the game: ");
-        String date = input.nextLine();
-        Game game = new Game(searchPlayer(nameWhite), searchPlayer(nameBlack), location, date);
-        String move;
-        do {
-            System.out.println("Enter the algebraic notation per FIDE outlines: ");
-            move = input.nextLine();
-            game.addMove(move);
-        } while (!game.endGame(move));
+    //EFFECTS: Adds the Game to the list of all games
+    public boolean addGame(Game game) {
+        games.add(game);
+        return true;
     }
 }
+
+
