@@ -10,7 +10,8 @@ However, most databases are either online (chess.com, ...), or paid via a one-ti
 As such, I thought it would be a great idea to code a chess database application of my own.<br>
 
 *User stories*:
-- As a user, I want to be able to add a game into the database using FIDE notation.
-- As a user, I want to be able to see the players of the match, the rankings of the players at the time of playing. Some
-stats from each player such as win rate.
+- As a user, I want to be able to add multiple game into the database using FIDE notation.
+- As a user, I want to be able to determine the winner of a game based on the notation and moves entered.
+- As a user, I want to be able to add multiple players to the database with their name, title, and win/loss record.
+- As a user, I want to be able to see the players of the match, the rankings of the players.
 - User **cannot** determine the best move from a certain position. This is **NOT** a chess engine.
