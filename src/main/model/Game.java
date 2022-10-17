@@ -1,16 +1,19 @@
+//I found out about AtomicInteger while using the Oracle Documentation.
 package model;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 //This class is responsible for storing and processing all
 //information related to a single game of chess
 public class Game {
-    private static int gameID = 0;
+    private static AtomicInteger idCounter = new AtomicInteger();
     String location;
     String date;
     Player[] players = new Player[2];
     ArrayList<String> moves = new ArrayList<String>();
     int result;
+    private final int gameID;
 
     //Creates a game object, puts players[0] as white, players[1] as black
     //and saves other information
@@ -19,7 +22,7 @@ public class Game {
         this.players[1] = playerBlack;
         this.location = location;
         this.date = date;
-        gameID++;
+        gameID = idCounter.getAndIncrement();
     }
 
     //EFFECTS: returns the gameID
@@ -49,24 +52,28 @@ public class Game {
     //EFFECTS: verifies that the move is a valid one
     //based on FIDE notation outline
     boolean verifyMove(String move) {
-        char[] availableCharacters = {'1', '2', '3', '4', '5', '6', '7', '8',
-                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'Q', 'K', 'N', 'B', 'R', 'x', '+', '=', '#'};
+        char[] availableCharacters = {'1', '2', '3', '4', '5', '6', '7', '8', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+                'Q', 'K', 'N', 'B', 'R', 'x', '+', '=', '#'};
         if (move.length() < 2 || move.length() > 4) {
-            for (int i = 0; i < move.length(); i++) {
-                boolean found = false;
-                for (char letter : availableCharacters) {
-                    if (letter == move.charAt(i)) {
-                        found = true;
-                        break;
+            return false;
+        }
+        for (int i = 0; i < move.length(); i++) {
+            boolean found = false;
+            for (char chr : availableCharacters) {
+                if (move.charAt(i) == chr) {
+                    found = true;
+                    break;
+                } else if (move.charAt(i) == '-') {
+                    if (endGame(move)) {
+                        return true;
                     }
                 }
-                if (move.charAt(i) == '-') {
-                    endGame(move);
-                } else if (!found) {
-                    return false;
-                }
+            }
+            if (!found) {
+                return false;
             }
         }
+        moves.add(move);
         return true;
     }
 
@@ -74,15 +81,20 @@ public class Game {
     //MODIFIES: this
     //EFFECTS: Ends the game and modifies the result
     boolean endGame(String move) {
-        if (move.charAt(0) == '1') {
+        if (move.length() != 3 || move.charAt(1) != '-') {
+            return false;
+        }
+        if (move.charAt(0) == '1' && move.charAt(2) == '0') {
             result = 0;
             players[0].incrementWin();
             players[1].incrementLoss();
+            moves.add(move);
             return true;
-        } else if (move.charAt(0) == '0') {
+        } else if (move.charAt(0) == '0' && move.charAt(2) == '1') {
             result = 1;
             players[1].incrementWin();
             players[0].incrementLoss();
+            moves.add(move);
             return true;
         }
         return false;

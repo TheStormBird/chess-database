@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +10,19 @@ public class Database {
     ArrayList<Game> games = new ArrayList<>();
     ArrayList<Player> players = new ArrayList<>();
 
+
     //EFFECTS: Creates the database for all the information
     public Database() {
+    }
+
+    //EFFECTS: Returns the arraylists for all players
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    //EFFECTS: Returns the arraylists for all games
+    public ArrayList<Game> getGames() {
+        return games;
     }
 
     //REQUIRES: A String name

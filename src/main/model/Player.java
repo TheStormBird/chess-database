@@ -4,9 +4,8 @@ import java.lang.Math.*;
 
 //Stores and modifies all the actions of players
 public class Player {
-    private static int playerID = 0;
-    private int wins = 0;
-    private int losses = 0;
+    private int wins;
+    private int losses;
     String name;
     String title;
     int rating;
@@ -18,21 +17,23 @@ public class Player {
         this.rating = rating;
         this.wins = wins;
         this.losses = losses;
-        playerID++;
     }
 
+    //Creates a player with name, title, and rating
+    public Player(String name, String title, int rating) {
+        this(name, title, rating, 0,0);
+    }
+
+    //Creates a player with only a name and a title
     public Player(String name, String title) {
-        new Player(name, title, 0, 0, 0);
+        this(name, title, 0, 0, 0);
     }
 
+    //Creates a player with only a name
     public Player(String name) {
-        new Player(name, "Amateur");
+        this(name, "Amateur");
     }
 
-    //EFFECTS: returns the assigned player ID.
-    int getPlayerID() {
-        return playerID;
-    }
 
     //EFFECTS: returns the name
     public String getName() {
@@ -44,17 +45,31 @@ public class Player {
         return title;
     }
 
+    //EFFECTS: Returns the ELO Rating
+    public int getRating() {
+        return rating;
+    }
+
+    //EFFECTS: Returns the number of wins
+    public int getWins() {
+        return wins;
+    }
+
+    //EFFECTS: Returns the number of losses
+    public int getLosses() {
+        return losses;
+    }
 
     //MODIFIES: this
     //EFFECTS: Increases the number of wins
     void incrementWin() {
-        wins++;
+        this.wins++;
     }
 
     //MODIFIES: this
     //EFFECTS: Increases the number of losses
     void incrementLoss() {
-        losses++;
+        this.losses++;
     }
 
 
