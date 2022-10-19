@@ -49,18 +49,18 @@ public class DatabaseApp {
     //EFFECTS: Creates a Game Object
     public static Game gameCreator(Scanner input, Database database) {
         System.out.println("Enter the name of player on white pieces: ");
-        String nameWhite = input.nextLine();
+        String nameWhite = input.next();
         System.out.println("Enter the name of player on black pieces: ");
-        String nameBlack = input.nextLine();
+        String nameBlack = input.next();
         System.out.println("Enter the location of the game: ");
-        String location = input.nextLine();
+        String location = input.next();
         System.out.println("Enter the date of the game: ");
-        String date = input.nextLine();
+        String date = input.next();
         Game game = new Game(database.searchPlayer(nameWhite), database.searchPlayer(nameBlack), location, date);
         String move;
         do {
             System.out.println("Enter the algebraic notation per FIDE outlines: ");
-            move = input.nextLine();
+            move = input.next();
             game.addMove(move);
         } while (!game.endGame(move));
         return game;
@@ -90,7 +90,7 @@ public class DatabaseApp {
                 break;
             case 3:
                 System.out.println("Enter the name of the player: ");
-                String name = input.nextLine();
+                String name = input.next();
                 Player player = database.searchPlayer(name);
                 System.out.println(player.printPlayer());
                 break;
