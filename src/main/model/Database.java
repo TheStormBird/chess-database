@@ -11,10 +11,22 @@ import java.util.ArrayList;
 public class Database implements Writable {
     ArrayList<Game> games = new ArrayList<>();
     ArrayList<Player> players = new ArrayList<>();
+    private String name;
 
 
     //EFFECTS: Creates the database for all the information
+    public Database(String name) {
+        this.name = name;
+    }
+
+    //EFFECTS: Create a database without any specific name
     public Database() {
+        this("User");
+    }
+
+    //EFFECTS: Returns the name of the Database
+    public String getName() {
+        return this.name;
     }
 
     //EFFECTS: Returns the arraylists for all players
@@ -74,6 +86,7 @@ public class Database implements Writable {
         JSONArray playerArray = new JSONArray();
         JSONArray gamesArray = new JSONArray();
         try {
+            jsonObject.put("name", name);
             for (Player player: players) {
                 playerArray.put(player.toJson());
             }

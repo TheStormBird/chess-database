@@ -17,3 +17,6 @@ As such, I thought it would be a great idea to code a chess database application
 - As a user, I want to be able to save all the newly added players and games upon exiting.
 - As a user, I want to be able to load all the saved data and use it again.
 - User **cannot** determine the best move from a certain position. This is **NOT** a chess engine.
+
+Citations:
+- Persistence, WriterTest, and ReaderTest were inspired from the example file.

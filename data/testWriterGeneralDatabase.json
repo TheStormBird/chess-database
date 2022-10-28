@@ -1,0 +1,26 @@
+{
+    "players": [
+        {
+            "wins": 12000,
+            "name": "Magnus",
+            "rating": 2980,
+            "title": "GM",
+            "losses": 2000
+        },
+        {
+            "wins": 10000,
+            "name": "Hikaru",
+            "rating": 2680,
+            "title": "IM",
+            "losses": 2000
+        }
+    ],
+    "name": "Magnus",
+    "games": [{
+        "date": "2021/02/18",
+        "player1": "Hikaru",
+        "moves": [],
+        "location": "Iceland",
+        "player0": "Magnus"
+    }]
+}

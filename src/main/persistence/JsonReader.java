@@ -44,7 +44,8 @@ public class JsonReader {
 
     //EFFECTS: parses the database from JSON object and returns it
     private Database parseDatabase(JSONObject jsonObject) {
-        Database db = new Database();
+        String dbName = jsonObject.getString("name");
+        Database db = new Database(dbName);
         addData(db, jsonObject);
         return db;
     }
@@ -54,23 +55,24 @@ public class JsonReader {
     private void addData(Database db, JSONObject jsonObject) {
         JSONArray gameArray = jsonObject.getJSONArray("games");
         JSONArray playerArray = jsonObject.getJSONArray("players");
-        for (Object json: gameArray) {
-            JSONObject nextGame = (JSONObject) json;
-            addGame(db, nextGame);
-        }
         for (Object json: playerArray) {
             JSONObject nextPlayer = (JSONObject) json;
             addPlayer(db, nextPlayer);
+        }
+        for (Object json: gameArray) {
+            JSONObject nextGame = (JSONObject) json;
+            addGame(db, nextGame);
         }
     }
 
     //MODIFIES: db
     //EFFECTS: parses games from JSON object and adds it to Database
     private void addGame(Database db, JSONObject jsonObject) {
-        int id = jsonObject.getInt("gameID");
         String location = jsonObject.getString("location");
         String date = jsonObject.getString("date");
-        Player[] players = (Player[]) jsonObject.get("players");
+        Player[] players = new Player[2];
+        players[0] = db.searchPlayer(jsonObject.getString("player0"));
+        players[1] = db.searchPlayer(jsonObject.getString("player1"));
         JSONArray moves = jsonObject.getJSONArray("moves");
         Game game = new Game(players[0], players[1], location, date, convertJson(moves));
         db.addGame(game);

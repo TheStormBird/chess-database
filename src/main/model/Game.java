@@ -127,7 +127,8 @@ public class Game implements Writable {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("location", this.location);
         jsonObject.put("date", this.date);
-        jsonObject.put("players", this.players);
+        jsonObject.put("player0", this.players[0].getName());
+        jsonObject.put("player1", this.players[1].getName());
         jsonObject.put("moves", this.moves);
         return jsonObject;
     }
