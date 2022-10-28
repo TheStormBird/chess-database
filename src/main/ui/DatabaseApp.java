@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DatabaseApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/database.json";
     private Scanner input;
     private Database database;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    public  DatabaseApp() {
-        Database database = new Database();
+    public  DatabaseApp() throws FileNotFoundException {
+        database = new Database();
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

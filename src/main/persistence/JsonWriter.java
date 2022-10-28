@@ -1,8 +1,13 @@
 package persistence;
 
 import model.Database;
+import model.Game;
+import model.Player;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 //Represents a writer object that writes Database into a JSON file
 public class JsonWriter {

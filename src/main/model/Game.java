@@ -2,6 +2,7 @@
 
 package model;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -123,6 +124,11 @@ public class Game implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("location", this.location);
+        jsonObject.put("date", this.date);
+        jsonObject.put("players", this.players);
+        jsonObject.put("moves", this.moves);
+        return jsonObject;
     }
 }

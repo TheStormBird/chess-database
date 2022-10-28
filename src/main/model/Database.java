@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -68,7 +70,22 @@ public class Database implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject jsonObject = new JSONObject();
+        JSONArray playerArray = new JSONArray();
+        JSONArray gamesArray = new JSONArray();
+        try {
+            for (Player player: players) {
+                playerArray.put(player.toJson());
+            }
+            for (Game game: games) {
+                gamesArray.put(game.toJson());
+            }
+            jsonObject.put("players", playerArray);
+            jsonObject.put("games", gamesArray);
+        } catch (JSONException e) {
+            System.out.println("Database could not be converted to JSON");
+        }
+        return jsonObject;
     }
 }
 

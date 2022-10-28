@@ -1,0 +1,10 @@
+{
+    "players": [{
+        "wins": 12000,
+        "name": "Magnus",
+        "rating": 2988,
+        "title": "GM",
+        "losses": 2000
+    }],
+    "games": []
+}
