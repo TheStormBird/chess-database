@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.lang.Math.*;
 
 //Stores and modifies all the actions of players
-public class Player {
+public class Player implements Writable {
     private int wins;
     private int losses;
     String name;
@@ -83,5 +86,10 @@ public class Player {
                     + " (" + getTitle() + ") \n ELO rating: " + getRating() + "\n Win/Loss Ratio: "
                     + 1;
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 }

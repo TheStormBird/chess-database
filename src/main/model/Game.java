@@ -2,28 +2,37 @@
 
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 //This class is responsible for storing and processing all
 //information related to a single game of chess
-public class Game {
+public class Game implements Writable {
     private static AtomicInteger idCounter = new AtomicInteger();
     String location;
     String date;
     Player[] players = new Player[2];
-    ArrayList<String> moves = new ArrayList<String>();
+    ArrayList<String> moves;
     int result;
     private final int gameID;
 
     //Creates a game object, puts players[0] as white, players[1] as black
     //and saves other information
-    public Game(Player playerWhite, Player playerBlack, String location,String date) {
+    public Game(Player playerWhite, Player playerBlack, String location,String date, ArrayList<String> moves) {
         this.players[0] = playerWhite;
         this.players[1] = playerBlack;
         this.location = location;
         this.date = date;
         gameID = idCounter.getAndIncrement();
+        this.moves = moves;
+        endGame(moves.get(moves.size()));
+    }
+
+    public Game(Player playerWhite, Player playerBlack, String location,String date) {
+        this(playerWhite, playerBlack, location,date, new ArrayList<>());
     }
 
     //EFFECTS: returns the gameID
@@ -107,5 +116,10 @@ public class Game {
                 + getPlayers()[1].getName() + "\n location:" + location + "\n date: " + date
                 + "The winner of the game is: " + getPlayers()[result].getName() + " ("
                 + getPlayers()[result].getTitle() + ")\n";
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 }

@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 //Stores all the games and players and allows access
-public class Database {
+public class Database implements Writable {
     ArrayList<Game> games = new ArrayList<>();
     ArrayList<Player> players = new ArrayList<>();
 
@@ -61,6 +64,11 @@ public class Database {
     public boolean addGame(Game game) {
         games.add(game);
         return true;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 }
 

@@ -14,4 +14,6 @@ As such, I thought it would be a great idea to code a chess database application
 - As a user, I want to be able to determine the winner of a game based on the notation and moves entered.
 - As a user, I want to be able to add multiple players to the database with their name, title, and win/loss record.
 - As a user, I want to be able to see the players of the match, the rankings of the players.
+- As a user, I want to be able to save all the newly added players and games upon exiting.
+- As a user, I want to be able to load all the saved data and use it again.
 - User **cannot** determine the best move from a certain position. This is **NOT** a chess engine.

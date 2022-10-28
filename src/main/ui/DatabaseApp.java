@@ -21,6 +21,11 @@ public class DatabaseApp {
             int command = input.nextInt();
             commandCenter(database, command, input);
             if (command == 5) {
+                System.out.println("Do you want to save the newly added data? (y/n)");
+                String answer = input.next();
+                if (answer.compareTo("y") == 0) {
+
+                }
                 exit = true;
             }
 
