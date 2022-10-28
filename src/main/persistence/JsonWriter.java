@@ -11,7 +11,7 @@ public class JsonWriter {
     private String destination;
 
     //construct the object with a certain destination
-    JsonWriter(String destination) {
+    public JsonWriter(String destination) {
         this.destination = destination;
     }
 

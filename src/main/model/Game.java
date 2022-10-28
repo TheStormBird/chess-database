@@ -28,7 +28,10 @@ public class Game implements Writable {
         this.date = date;
         gameID = idCounter.getAndIncrement();
         this.moves = moves;
-        endGame(moves.get(moves.size()));
+        if (moves.size() > 0) {
+            endGame(moves.get(moves.size()));
+        }
+
     }
 
     public Game(Player playerWhite, Player playerBlack, String location,String date) {

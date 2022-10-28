@@ -3,18 +3,27 @@ package ui;
 import model.Database;
 import model.Game;
 import model.Player;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class DatabaseApp {
+    private static final String JSON_STORE = "./data/workroom.json";
+    private Scanner input;
+    private Database database;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    DatabaseApp() {
-        runDatabase();
-    }
-
-    void runDatabase() {
+    public  DatabaseApp() {
         Database database = new Database();
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        loadDatabase();
         boolean exit = false;
         while (!exit) {
             welcomeMsg();
@@ -22,9 +31,8 @@ public class DatabaseApp {
             commandCenter(database, command, input);
             if (command == 5) {
                 System.out.println("Do you want to save the newly added data? (y/n)");
-                String answer = input.next();
-                if (answer.compareTo("y") == 0) {
-
+                if (input.next().compareTo("y") == 0) {
+                    saveDatabase();
                 }
                 exit = true;
             }
@@ -108,5 +116,24 @@ public class DatabaseApp {
         }
     }
 
+    //EFFECTS:
+    public void saveDatabase() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(database);
+            jsonWriter.close();
+            System.out.println("Saved database to: " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
 
+    public void loadDatabase() {
+        try {
+            database = jsonReader.read();
+            System.out.println("Loaded Database from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
 }
