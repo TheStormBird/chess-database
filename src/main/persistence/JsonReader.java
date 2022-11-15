@@ -44,8 +44,7 @@ public class JsonReader {
 
     //EFFECTS: parses the database from JSON object and returns it
     private Database parseDatabase(JSONObject jsonObject) {
-        String dbName = jsonObject.getString("name");
-        Database db = new Database(dbName);
+        Database db = new Database();
         addData(db, jsonObject);
         return db;
     }
