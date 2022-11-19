@@ -30,7 +30,7 @@ public class Game implements Writable {
         gameID = idCounter.getAndIncrement();
         this.moves = moves;
         if (moves.size() > 0) {
-            endGame(moves.get(moves.size()));
+            endGame(moves.get(moves.size() - 1));
         }
 
     }
@@ -40,13 +40,17 @@ public class Game implements Writable {
     }
 
     //EFFECTS: returns the gameID
-    int getGameID() {
+    public int getGameID() {
         return gameID;
     }
 
     //EFFECTS: return the array of the two players
-    Player[] getPlayers() {
+    public Player[] getPlayers() {
         return players;
+    }
+
+    public int getResult() {
+        return result;
     }
 
     //REQUIRES: A String representing a move
@@ -131,5 +135,9 @@ public class Game implements Writable {
         jsonObject.put("player1", this.players[1].getName());
         jsonObject.put("moves", this.moves);
         return jsonObject;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

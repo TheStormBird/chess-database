@@ -25,19 +25,19 @@ public class DatabaseApp {
         jsonReader = new JsonReader(JSON_STORE);
         loadDatabase();
         boolean exit = false;
-        while (!exit) {
-            welcomeMsg();
-            int command = input.nextInt();
-            commandCenter(database, command, input);
-            if (command == 5) {
-                System.out.println("Do you want to save the newly added data? (y/n)");
-                if (input.next().compareTo("y") == 0) {
-                    saveDatabase();
-                }
-                exit = true;
-            }
-
-        }
+//        while (!exit) {
+//            welcomeMsg();
+//            int command = input.nextInt();
+//            commandCenter(database, command, input);
+//            if (command == 5) {
+//                System.out.println("Do you want to save the newly added data? (y/n)");
+//                if (input.next().compareTo("y") == 0) {
+//                    saveDatabase();
+//                }
+//                exit = true;
+//            }
+//
+//        }
     }
 
     //REQUIRES: A Scanner object
@@ -135,5 +135,9 @@ public class DatabaseApp {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
+    }
+
+    public Database getDatabase() {
+        return database;
     }
 }

@@ -16,9 +16,17 @@ As such, I thought it would be a great idea to code a chess database application
 - As a user, I want to be able to see the players of the match, the rankings of the players.
 - As a user, I want to be able to save all the newly added players and games upon exiting.
 - As a user, I want to be able to load all the saved data and use it again.
-- As a user, I want to be able to add multiple Games or Players to the Database.
+- As a user, I want to be able to add multiple Players to the Database via the GUI.
 - As a user, I want to be able to load and save the state of the application
 - User **cannot** determine the best move from a certain position. This is **NOT** a chess engine.
 
+# Instructions for Grader
+
+- You can generate the first required event related to adding Xs to a Y by adding a Player and then clicking on Search Player button.
+- You can generate the second required event related to adding Xs to a Y by...
+- You can locate my visual component by...
+- You can save the state of my application by clicking on the save button.
+- You can reload the state of my application by clicking on the load button.
+- 
 Citations:
 - Persistence, WriterTest, and ReaderTest were inspired from the example file.

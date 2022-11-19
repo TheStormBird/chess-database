@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class NewPlayerGUI extends JFrame implements ActionListener {
     private Database database;
@@ -26,7 +27,7 @@ public class NewPlayerGUI extends JFrame implements ActionListener {
     public NewPlayerGUI(Database database) {
         super("Add a New Player");
         this.database = database;
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setPreferredSize(new Dimension(400, 200));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(new FlowLayout());
@@ -80,6 +81,13 @@ public class NewPlayerGUI extends JFrame implements ActionListener {
             int playerLosses = Integer.parseInt(wins.getText());
             Player player = new Player(playerName, playerTitle, playerRating, playerWins, playerLosses);
             database.addPlayer(player);
+            JDialog window = new JDialog();
+            JLabel image = new JLabel();
+            image.setIcon(new ImageIcon("pngwing.png"));
+            window.add(image);
+            window.add(new JLabel("Player was added"));
+            window.setBounds(500, 150, 300, 200);
+            window.setVisible(true);
         }
     }
 }

@@ -3,18 +3,27 @@
         {
             "wins": 12000,
             "name": "Magnus",
-            "rating": 2988,
+            "rating": 2900,
             "title": "GM",
-            "losses": 2000
+            "losses": 12002
         },
         {
-            "wins": 1,
+            "wins": 44,
             "name": "Mohsen",
-            "rating": 1000,
+            "rating": 800,
             "title": "Amateur",
-            "losses": 0
+            "losses": 42
         }
     ],
     "name": "User",
-    "games": []
+    "games": [{
+        "date": "03/15/2003",
+        "player1": "Magnus",
+        "moves": [
+            "e4",
+            "e5"
+        ],
+        "location": "ams",
+        "player0": "Mohsen"
+    }]
 }
