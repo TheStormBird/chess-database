@@ -44,10 +44,11 @@ public class Database implements Writable {
     public Player searchPlayer(String name) {
         for (Player player: players) {
             if (player.getName().compareTo(name) == 0) {
+                EventLog.getInstance().logEvent(new Event("Player with name " + name + " was looked up."));
                 return player;
             }
         }
-        System.out.println("Player not found, new Player added.");
+        EventLog.getInstance().logEvent(new Event("Player not found, new Player added."));
         return new Player(name);
     }
 
@@ -56,10 +57,11 @@ public class Database implements Writable {
     public Game searchGame(int id) {
         for (Game game: games) {
             if (game.getGameID() == id) {
+                EventLog.getInstance().logEvent(new Event("Game with id " + id + " was looked up."));
                 return game;
             }
         }
-        System.out.println("Game not found!");
+        EventLog.getInstance().logEvent(new Event("Game not found!"));
         return null;
     }
 
@@ -69,6 +71,7 @@ public class Database implements Writable {
     //EFFECTS: Adds the player to the list of all players
     public boolean addPlayer(Player player) {
         players.add(player);
+        EventLog.getInstance().logEvent(new Event("Player " + player.getName() + " was added to database."));
         return true;
     }
 
@@ -77,6 +80,7 @@ public class Database implements Writable {
     //EFFECTS: Adds the Game to the list of all games
     public boolean addGame(Game game) {
         games.add(game);
+        EventLog.getInstance().logEvent(new Event("New Game was added to database."));
         return true;
     }
 

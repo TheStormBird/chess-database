@@ -1,6 +1,7 @@
 package ui;
 
 import model.Database;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -10,6 +11,7 @@ import javax.swing.border.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 
 //The main class for the GUI. Every graphic interface starts from here.
 public class MainGUI extends JFrame implements ActionListener {
@@ -31,6 +33,17 @@ public class MainGUI extends JFrame implements ActionListener {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Iterator iterator = EventLog.getInstance().iterator();
+                while (iterator.hasNext()) {
+                    System.out.println(iterator.next().toString());
+
+                }
+                EventLog.getInstance().clear();
+            }
+        });
         setPreferredSize(new Dimension(400, 200));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         setLayout(new FlowLayout());

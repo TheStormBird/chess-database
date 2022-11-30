@@ -13,6 +13,13 @@
             "rating": 800,
             "title": "Amateur",
             "losses": 42
+        },
+        {
+            "wins": 12000,
+            "name": "Jason",
+            "rating": 2400,
+            "title": "GM",
+            "losses": 12000
         }
     ],
     "name": "User",

@@ -27,6 +27,13 @@ As such, I thought it would be a great idea to code a chess database application
 - You can locate my visual component by...
 - You can save the state of my application by clicking on the save button.
 - You can reload the state of my application by clicking on the load button.
-- 
+
+# Phase 4: Task 2
+Sample events that are logged:
+New Game was added has been added to database.
+Player X has been added to database.
+Player X was looked up.
+
 Citations:
 - Persistence, WriterTest, and ReaderTest were inspired from the example file.
+
