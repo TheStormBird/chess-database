@@ -34,6 +34,11 @@ New Game was added has been added to database.
 Player X has been added to database.
 Player X was looked up.
 
+# Phase 4: Task 3
+Now looking at the UML graph, I could have done a better job with the GUI.
+I should have put all the GUI in one large class instead of separating into 4 different Frames.
+Besides that, there are some of the other design principals that I could have applied to my project to make the code
+less chunky.
 Citations:
 - Persistence, WriterTest, and ReaderTest were inspired from the example file.
 
